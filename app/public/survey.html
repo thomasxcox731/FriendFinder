@@ -31,7 +31,7 @@
                 <input type="text" class="form-control" id="reserve-phone">
               </div>
               <!-- Questions -->
-              <h3>Question 1</h3>
+              <!-- <h3>Question 1</h3>
               <h4>;alskdjfas;dlkfj</h4>
               <select class = "chosen-select" id="q1" style="display: none;">
                     <option value></option>  
@@ -60,7 +60,59 @@
                         <li class = "active-result" data-option-array-index="5" style>5 (Strongly Agree)</li>
                     </ul>
                 </div>
-            </div>  
+            </div>   -->
+              <div class="form-group">
+                <h4>For the following prompts, enter values 1-5 (1 = Strongly Disagree, 5 = Strongly Agree)</h4>
+                <label for="reserve-q1">Question 1</label>
+                <h6>Your mind is always buzzing with unexplored ideas and plans.</h6>
+                <input type="text" class="form-control" id="reserve-q1">
+              </div>
+              <div class="form-group">
+                <label for="reserve-q2">Question 2</label>
+                <h6>Generally speaking, you rely more on your experience than your imagination.</h6>
+                <input type="text" class="form-control" id="reserve-q2">
+              </div>
+              <div class="form-group">
+                <label for="reserve-q3">Question 3</label>
+                <h6>You find it easy to stay relaxed and focused even when there is some pressure.</h6>
+                <input type="text" class="form-control" id="reserve-q3">
+              </div>
+              <div class="form-group">
+                <label for="reserve-q4">Question 4</label>
+                <h6>You rarely do something just out of sheer curiosity.</h6>
+                <input type="text" class="form-control" id="reserve-q4">
+              </div>
+              <div class="form-group">
+                <label for="reserve-q5">Question 5</label>
+                <h6>People can rarely upset you.</h6>
+                <input type="text" class="form-control" id="reserve-q5">
+              </div>
+              <div class="form-group">
+                <label for="reserve-q6">Question 6</label>
+                <h6>It is often difficult for you to relate to other people’s feelings.</h6>
+                <input type="text" class="form-control" id="reserve-q6">
+              </div>
+              <div class="form-group">
+                <label for="reserve-q7">Question 7</label>
+                <h6>In a discussion, truth should be more important than people’s sensitivities.</h6>
+                <input type="text" class="form-control" id="reserve-q7">
+              </div>
+              <div class="form-group">
+                <label for="reserve-q8">Question 8</label>
+                <h6>You rarely get carried away by fantasies and ideas.</h6>
+                <input type="text" class="form-control" id="reserve-q8">
+              </div>
+              <div class="form-group">
+                <label for="reserve-q9">Question 9</label>
+                <h6>You think that everyone’s views should be respected regardless of whether they are supported by
+                  facts or not.</h6>
+                <input type="text" class="form-control" id="reserve-q9">
+              </div>
+              <div class="form-group">
+                  <label for="reserve-q10">Question 10</label>
+                  <h6>You feel more energetic after spending time with a group of people.</h6>
+                  <input type="text" class="form-control" id="reserve-q10">
+                </div>
               <button type="submit" class="btn btn-primary submit">Submit</button>
             </form>
           </div>
@@ -70,13 +122,60 @@
 
 
     <footer class="footer">
-        <div class="container">
-          <p><a href="/api/friends">API Friends Link</a> | <a href="https://github.com/thomasxcox731/FriendFinder">Github Repo</a>
-        </div>
-      </footer>
+      <div class="container">
+        <p><a href="/api/friends">API Friends Link</a> | <a href="https://github.com/thomasxcox731/FriendFinder">Github
+            Repo</a>
+      </div>
+    </footer>
 
   </div>
-
 </body>
 
 </html>
+
+<script type="text/javascript">
+  $(".submit").on("click", function (event) {
+    event.preventDefault();
+
+    // Here we grab the form elements
+    var newFriend = {
+      Name: $("#reserve-name").val().trim(),
+      Photo: $("#reserve-phone").val().trim(),
+      Question_1: $("#reserve-q1").val().trim(),
+      Question_2: $("#reserve-q2").val().trim(),
+      Question_3: $("#reserve-q3").val().trim(),
+      Question_4: $("#reserve-q4").val().trim(),
+      Question_5: $("#reserve-q5").val().trim(),
+      Question_6: $("#reserve-q6").val().trim(),
+      Question_7: $("#reserve-q7").val().trim(),
+      Question_8: $("#reserve-q8").val().trim(),
+      Question_9: $("#reserve-q9").val().trim(),
+      Question_10: $("#reserve-q10").val().trim(),
+    };
+
+    console.log(newFriend);
+
+    // This line is the magic. It"s very similar to the standard ajax function we used.
+    // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+    // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+    // depending on if a tables is available or not.
+
+    $.post("/api/friends", newFriend,
+      function (data) {
+        // Clear the form when submitting
+        $("#reserve-name").val("");
+        $("#reserve-photo").val("");
+        $("#reserve-q1").val("");
+        $("#reserve-q2").val("");
+        $("#reserve-q3").val("");
+        $("#reserve-q4").val("");
+        $("#reserve-q5").val("");
+        $("#reserve-q6").val("");
+        $("#reserve-q7").val("");
+        $("#reserve-q8").val("");
+        $("#reserve-q9").val("");
+        $("#reserve-q10").val("");
+      });
+
+  });
+</script>
