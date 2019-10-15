@@ -1,0 +1,21 @@
+{
+  "name": "FriendFinder",
+  "version": "1.0.0",
+  "description": "This is the repository for the Friend Finder assignment for Unit 13: Express.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomasxcox731/FriendFinder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thomasxcox731/FriendFinder/issues"
+  },
+  "homepage": "https://github.com/thomasxcox731/FriendFinder#readme"
+}

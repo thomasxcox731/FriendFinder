@@ -1,5 +1,6 @@
 //NPM Dependencies
 var express = require("express");
+var path = require("path");
 var app = express ();
 
 //Linking to the PORT
